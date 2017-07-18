@@ -5,17 +5,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.hanbit.gms.dao.ArticleDAO;
 import com.hanbit.gms.daoImpl.ArticleDAOImpl;
 import com.hanbit.gms.domain.ArticleBean;
 import com.hanbit.gms.sevice.ArticleService;
 
 public class ArticleServiceImpl implements ArticleService{
 	ArticleBean bean;
+	public static ArticleServiceImpl instance = new ArticleServiceImpl();
+	public static ArticleServiceImpl getInstance() {
+		return instance;
+	}
 	List<ArticleBean> list;
 	Map<String, ArticleBean> map;
 	int count;
-	public ArticleServiceImpl() {
+	private ArticleServiceImpl() {
 		bean = new ArticleBean();
 		list = new ArrayList<>();
 		map = new HashMap<>();
@@ -23,35 +26,36 @@ public class ArticleServiceImpl implements ArticleService{
 	}
 	@Override
 	public String write(ArticleBean bean) {
-		return (new ArticleDAOImpl().insert(bean)==1)?"Success":"Fail";
+		return ArticleDAOImpl.getInstance().insert(bean);
 	}
 	@Override
 	public List<ArticleBean> list() {
-		return new ArticleDAOImpl().selectAll();
+		return ArticleDAOImpl.getInstance().selectAll();
 	}
 	@Override
 	public List<ArticleBean> findByName(String name) {
-		return new ArticleDAOImpl().selectById(name);
+		return ArticleDAOImpl.getInstance().selectById(name);
 	}
 	@Override
 	public List<ArticleBean> findById(String id) {
-		return new ArticleDAOImpl().selectById(id);
+		return ArticleDAOImpl.getInstance().selectById(id);
 	}
 	@Override
-	public int count() {
-		return new ArticleDAOImpl().count();
+	public String count() {
+		return String.valueOf(ArticleDAOImpl.getInstance().count());
 	}
 	@Override
 	public String modify(ArticleBean bean) {
-		
-		return (new ArticleDAOImpl().update(bean)==1)?"success":"fail";
+		return ArticleDAOImpl.getInstance().update(bean);
 	}
 
 	@Override
 	public String remove(String id) {
-		String remove= "";
-		
-		return remove;
+		return ArticleDAOImpl.getInstance().delete(id);
+	}
+	@Override
+	public ArticleBean findBySeq(String seq) {
+		return ArticleDAOImpl.getInstance().selectBySeq(seq);
 	}
 
 }

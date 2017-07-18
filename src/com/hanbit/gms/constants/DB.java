@@ -1,9 +1,17 @@
 package com.hanbit.gms.constants;
 //상수값 모아 놓은 곳
 public class DB {
-	public static final String DRIVER="oracle.jdbc.driver.OracleDriver";
-	public static final String URL="jdbc:oracle:thin:@localhost:1521:xe";
-	public static final String USERID="hanbit";
+	public static final String ORACLE_DRIVER="oracle.jdbc.driver.OracleDriver";
+	public static final String ORACLE_URL="jdbc:oracle:thin:@localhost:1521:xe";
+	public static final String MYSQL_DRIVER="";
+	public static final String MYSQL_URL="";
+	public static final String DB2_DRIVER="";
+	public static final String DB2_URL="";
+	public static final String MSSQL_DRIVER="";
+	public static final String MSSQL_URL="";
+	public static final String MARIADB_DRIVER="";
+	public static final String MARIADB_URL="";
+	public static final String USERNAME="hanbit";
 	public static final String PASSWORD="hanbit";
 	public static final String TABLE_MEMBER="Member";
 	public static final String MEMBER_ID="id";

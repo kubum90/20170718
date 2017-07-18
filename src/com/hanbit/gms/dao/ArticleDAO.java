@@ -5,11 +5,11 @@ import java.util.List;
 import com.hanbit.gms.domain.ArticleBean;
 
 public interface ArticleDAO {
-	public int insert(ArticleBean bean);
+	public String insert(ArticleBean bean);
 	public List<ArticleBean> selectAll(); 
 	public List<ArticleBean> selectById(String id);
 	public ArticleBean selectBySeq(String seq);
-	public int count();
-	public int update(ArticleBean bean);
-	public int delete(String seq);
+	public String count();
+	public String update(ArticleBean bean);
+	public String delete(String seq);
 }
